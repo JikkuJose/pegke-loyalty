@@ -1,0 +1,219 @@
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">About</h4>
+        <div class="ui inverted link list">
+          <a href="/" class="item">Home</a>
+          {% for post in site.posts limit:5 %}
+          {% if post.type == 'page' %}
+          <a href="{{ post.url }}" class="item" title="{{ post.title }}">{{ post.title }}</a>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Services</h4>
+        <div class="ui inverted link list">
+          <a href="#" class="item">Banana Pre-Order</a>
+          <a href="#" class="item">DNA FAQ</a>
+          <a href="#" class="item">How To Access</a>
+          <a href="#" class="item">Favorite X-Men</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Blogs</h4>
+        <div class="ui inverted link list">
+
+          {% for post in site.posts limit:5 %}
+          {% if post.type == 'blog' %}
+          <a href="{{ post.url }}" class="item" title="{{ post.title }}">{{ post.title }}</a>
+          {% endif %}
+          {% endfor %}
+
+        </div>
+      </div>
+      <div class="five wide column">
+        <h4 class="ui inverted header">Services</h4>
+        <div class="ui animated fade button positive big cta" tabindex="0">
+          <div class="visible content">30 Days Tree Trial <i class="heart icon red"></i></div>
+          <div class="hidden content">
+            With all Pro Features
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <!-- <div class="ui inverted section divider"></div>
+
+    <img src="assets/images/logo.png" class="ui centered mini image">
+
+    <div class="ui horizontal inverted small divided link list">
+      <a class="item" href="#">Site Map</a>
+      <a class="item" href="#">Contact Us</a>
+      <a class="item" href="#">Terms and Conditions</a>
+      <a class="item" href="#">Privacy Policy</a>
+    </div> -->
+
+
+  </div>
+</div>
+
+<div class="ui basic modal test">
+  <i class="close icon red"></i>
+  <form class="ui form segment">
+    <p class="ui grey header">Tell Us About Yourself</p>
+    <div class="two fields">
+      <div class="field">
+        <label>Name</label>
+        <input placeholder="First Name" name="name" type="text">
+      </div>
+      <div class="field">
+        <label>Phone</label>
+        <input placeholder="Phone Number" name="phone" type="tel">
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>Email</label>
+        <input placeholder="Email" name="email" type="email">
+      </div>
+      <div class="field">
+        <label>Location</label>
+        <input placeholder="Your City" type="text" name="city">
+      </div>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>Website</label>
+        <div class="ui labeled icon input">
+          <div class="ui label">
+            http(s)://
+          </div>
+          <input type="text" placeholder="yourdomain.tld">
+        </div>
+      </div>
+      <div class="field">
+
+      </div>
+    </div>
+    <div class="field ohidden">
+      <label>Query</label>
+      <textarea name="query" rows="4" cols="40" placeholder="Talk to a Human"></textarea>
+    </div>
+    <div class="inline field">
+      <div class="ui checkbox">
+        <input type="checkbox" name="terms" tabindex="0" class="hidden">
+        <label>By signing up, you agree to our Terms of Service and Privacy Policy</label>
+      </div>
+    </div>
+    <div class="ui blue submit button">Sign Up</div>
+    <div class="ui error message"></div>
+  </form>
+</div>
+
+
+<script src="{{ "/bower_components/jquery/dist/jquery.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/bower_components/semantic/dist/semantic.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/bower_components/fullpage.js/vendors/jquery.slimscroll.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/bower_components/fullpage.js/jquery.fullPage.min.js" | prepend: site.baseurl }}"></script>
+
+<script type="text/javascript">
+$('.menuinit')
+.popup({
+  inline   : true,
+  hoverable: true,
+  position : 'bottom left',
+  delay: {
+    show: 300,
+    hide: 800
+  }
+});
+
+$('.cta').click(function(){
+  $('.ui.modal').modal('show');
+});
+$(document).ready(function() {
+  $('#fullpage').fullpage({
+    lockAnchors: true,
+    animateAnchor: true,
+    scrollOverflow: true,
+    navigationTooltips: ['firstSlide', 'secondSlide', 'firstSlide', 'secondSlide'],
+    navigation: true,
+    navigationPosition: 'right',
+    sectionsColor: ['', '#4BBFC3', '#7BAABE', 'whitesmoke', '#000'],
+  });
+});
+
+$('.ui.dropdown').dropdown();
+$('.ui.checkbox').checkbox();
+
+$('.special.cards .image').dimmer({
+  on: 'hover'
+});
+
+$('.ui.form')
+.form({
+  fields: {
+    name: {
+      identifier: 'name',
+      rules: [
+        {
+          type   : 'empty',
+          prompt : 'Please enter your name'
+        }
+      ]
+    },
+    phone: {
+      identifier: 'phone',
+      rules: [
+        {
+          type   : 'minLength[10]',
+          prompt : 'Your 10 digit Mobile Number'
+        },
+        {
+          type   : 'number',
+          prompt : 'Numbers Only'
+        },
+        {
+          type   : 'maxLength[10]',
+          prompt : 'Your 10 digit Mobile Number'
+        }
+      ]
+    },
+    email: {
+      identifier: 'email',
+      rules: [
+        {
+          type   : 'empty',
+          prompt : 'Please select a gender'
+        },
+        {
+          type   : 'email',
+          prompt : 'Please select a gender'
+        }
+      ]
+    },
+    city: {
+      identifier: 'city',
+      rules: [
+        {
+          type   : 'empty',
+          prompt : 'Please enter your city'
+        }
+      ]
+    },
+    terms: {
+      identifier: 'terms',
+      rules: [
+        {
+          type   : 'checked',
+          prompt : 'You must agree to the terms and conditions'
+        }
+      ]
+    }
+  }
+})
+;
+</script>
