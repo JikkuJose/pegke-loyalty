@@ -15,7 +15,7 @@ twitter_username: pegkeapp
 github_username:  jekyll
 
 # Build settings
-markdown: markdown
+markdown: kramdown
 
 exclude:
   - bower_components/semantic/examples
